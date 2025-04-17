@@ -274,6 +274,16 @@ Clean SQLite join and date-derived dimensions
 Summary
 This analysis provided strong insight into sales trends over time, helped detect seasonality, and revealed growth drivers by region and product — all critical for better business forecasting and planning.
 
+Sources, Process, and Results:
+Sources:
+I used the Smart Sales dataset, which includes sales transactions with fields like SaleDate, SaleAmount, ProductID, Region, and PaymentType. Supplementary data like product details and customer info were also used.
+
+Process:
+I cleaned and prepared the data using Python and pandas, then loaded it into Power BI for OLAP operations. I created calculated columns for Year, Quarter, and Month, and built dashboards to slice and dice sales data over time. I performed drilldowns from year → quarter → month to analyze trends. The same visualizations and insights were replicated in Python for validation.
+
+Results:
+The analysis revealed key trends such as seasonal sales spikes, strong growth in certain product categories, regional performance variations, and consistent upward trends over specific years. The final dashboard helps stakeholders quickly explore sales patterns and make informed decisions.
+
 Update README.md
 
 Git Add-Commit-Push
