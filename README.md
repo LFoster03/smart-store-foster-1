@@ -89,7 +89,7 @@ Running the Code: Ensure that your CSV files are in the correct prepared/ folder
 Run the script in VS Code by opening the terminal and execute.
 This will; create the database (sales_warehouse.db) if it doesn’t exist, create the tables (customers, products, and sales) and insert data from the CSV files into the corresponding tables.
 
-# Cross-Platform Reporting with Spark
+# If using Mac: Cross-Platform Reporting with Spark 
 
 ## Setup Spark
 Install Apache Spark
@@ -127,7 +127,8 @@ Include screenshot of: Query results
 Include screenshot of: Final Dashboard / Charts
 
 Git Add-Commit-Push
-# Power BI and Visualizations
+
+# If Using Windows: Power BI and Visualizations
 
 ## Sales Growth Over Time – OLAP Analysis
 
@@ -272,3 +273,7 @@ Clean SQLite join and date-derived dimensions
 
 Summary
 This analysis provided strong insight into sales trends over time, helped detect seasonality, and revealed growth drivers by region and product — all critical for better business forecasting and planning.
+
+Update README.md
+
+Git Add-Commit-Push
