@@ -260,7 +260,7 @@ Jupyter Notebook visualizations
 
 Clean SQLite join and date-derived dimensions
 
-Business Questions Answered
+# Business Questions Answered
 Which regions show the most consistent sales growth year over year?
 The North is most consistent with sales but the East sells the most.
 
@@ -273,7 +273,7 @@ Sales spike in the winter months and decrease in the summer months.
 What months had the highest/lowest sales in 2024?
 Highest in February, lowest in March.
 
-Summary
+# Summary
 This analysis provided strong insight into sales trends over time, helped detect seasonality, and revealed growth drivers by region and product — all critical for better business forecasting and planning.
 
 Sources, Process, and Results:
