@@ -129,6 +129,13 @@ Include screenshot of: Final Dashboard / Charts
 Git Add-Commit-Push
 
 # If Using Windows: Power BI and Visualizations
+## OLAP Dashboard
+
+The Power BI file used for OLAP analysis is located in the [`olap/`](./olap/) folder:
+- **dashboard.pbix**: Contains all OLAP slicing, dicing, and drilldowns for sales growth analysis.
+
+> If you cannot view the `.pbix` file directly here, open it using [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+
 
 ## Sales Growth Over Time – OLAP Analysis
 
@@ -263,6 +270,10 @@ Totals in Python matched Power BI’s aggregated views
 OLAP queries were verified using slicing/dicing combinations
 
 SaleAmount trends validated across time, region, and category
+
+![Monthly Sales](olap/images/monthsales.png)
+
+
 
 Final Output
 Power BI dashboards
