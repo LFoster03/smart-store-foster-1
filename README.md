@@ -171,9 +171,8 @@ Note: ProductID in the `sale` table had an offset of +100, which we adjusted to 
 
 ### 1. Prepare the Data
 
-Querying the Data
-python
-Copy code
+## Querying the Data
+```python
 import pandas as pd
 import sqlite3
 
@@ -191,22 +190,21 @@ FROM sale s
 LEFT JOIN customer c ON s.CustomerID = c.CustomerID
 LEFT JOIN product p ON (s.ProductID - 100) = p.ProductID
 """, conn)
+```
 We also extracted: Year, Month Name, and Quarter from the SaleDate column:
-
-python
-Copy code
+```python
 df['SaleDate'] = pd.to_datetime(df['SaleDate'])
 df['Year'] = df['SaleDate'].dt.year
 df['Month Name'] = df['SaleDate'].dt.strftime('%B')
 df['Quarter'] = df['SaleDate'].dt.to_period("Q").astype(str)
-Filter for 2024 Data
-python
-Copy code
+```
+## Filter for 2024 Data
+```python
 df_2024 = df[df['Year'] == 2024].copy()
-Perform OLAP Analysis
+```
+## Perform OLAP Analysis
 🔹 Slicing – Sales by Product Category (2024)
-python
-Copy code
+```python
 category_sales = df_2024.groupby('Category')['SaleAmount'].sum().reset_index()
 
 sns.barplot(data=category_sales, x='Category', y='SaleAmount')
@@ -214,9 +212,9 @@ plt.title('Total Sales by Product Category (2024)')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
-🔹 Dicing – Sales by Region per Month (2024)
-python
-Copy code
+```
+## Dicing – Sales by Region per Month (2024)
+```python
 month_order = ['January', 'February', 'March', 'April', 'May', 'June',
                'July', 'August', 'September', 'October', 'November', 'December']
 df_2024['Month Name'] = pd.Categorical(df_2024['Month Name'], categories=month_order, ordered=True)
@@ -228,9 +226,9 @@ plt.title('Monthly Sales by Region (2024)')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
-🔹 Drilldown – Monthly Sales % Growth by Region
-python
-Copy code
+```
+## Drilldown – Monthly Sales % Growth by Region
+```python
 monthly_region_sales.sort_values(['Region', 'Month Name'], inplace=True)
 monthly_region_sales['% Growth'] = monthly_region_sales.groupby('Region')['SaleAmount'].pct_change() * 100
 monthly_region_sales['% Growth'] = monthly_region_sales['% Growth'].round(2)
@@ -241,54 +239,18 @@ plt.axhline(0, color='gray', linestyle='--')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
-Business Questions Answered
-Which regions show the most consistent sales growth year over year?
-→ Identified via region-wise % growth charts
-
-Do certain product categories drive most of the growth?
-→ Bar charts showed top-selling categories in 2024
-
-Are there seasonal spikes in sales (e.g., Q4)?
-→ Monthly trends and quarter comparisons revealed strong Q4 trends
-
-What months had the highest/lowest sales in 2024?
-→ Clear peak and dip months shown through line and bar plots
-
-Testing and Validation
-Totals in Python matched Power BI’s aggregated views
-
-OLAP queries were verified using slicing/dicing combinations
-
-SaleAmount trends validated across time, region, and category
-
-📊 Visualization Example
+```
 
 
-Final Output
-✅ Power BI dashboards
-
-✅ Jupyter Notebook visualizations
-
-✅ Clean SQLite joins and date-derived dimensions
-
-Summary
-This analysis provided strong insight into sales trends over time, helped detect seasonality, and revealed growth drivers by region and product — all critical for better business forecasting and planning.
-
-Sources, Process, and Results
-Sources:
-Smart Sales dataset — includes sales transactions, product info, customer data.
-
-Process:
-Used Python (pandas, seaborn) to clean, transform, and analyze the data.
-Power BI was used for slicing/dicing and OLAP-style drilldowns.
-Replicated the visuals in Python for validation.
-
-Results:
-Identified seasonal trends, category-driven growth, and regional consistency.
-Delivered dashboards to help stakeholders explore trends quickly.
 
 ![Monthly Sales](olap/images/monthsales.png)
-
+![Year Quarter Month](olap/images/yqm.png)
+![Total](olap/images/total.png)
+![Sum](olap/images/SumSale.png)
+![Year](olap/images/saleyear.png)
+![By Region](olap/images/region.png)
+![Payment Type](olap/images/paytype.png)
+![Sales Growth](olap/images/MsalesGrowth.png)
 
 
 Final Output
@@ -309,7 +271,7 @@ Process:
 I cleaned and prepared the data using Python and pandas, then loaded it into Power BI for OLAP operations. I created calculated columns for Year, Quarter, and Month, and built dashboards to slice and dice sales data over time. I performed drilldowns from year → quarter → month to analyze trends. The same visualizations and insights were replicated in Python for validation.
 
 Results:
-The analysis revealed key trends such as seasonal sales spikes, strong growth in certain product categories, regional performance variations, and consistent upward trends over specific years. The final dashboard helps stakeholders quickly explore sales patterns and make informed decisions.
+The analysis revealed key trends such as seasonal sales spikes, strong growth in certain product categories, regional performance variations, and  trends over specific months. The final dashboard helps stakeholders quickly explore sales patterns and make informed decisions.
 
 Update README.md
 
