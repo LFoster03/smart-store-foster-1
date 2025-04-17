@@ -200,18 +200,15 @@ Quarter
 
 From the SaleDate column:
 
-```python
-Copy code
-df['SaleDate'] = pd.to_datetime(df['SaleDate'])
+```df['SaleDate'] = pd.to_datetime(df['SaleDate'])
 df['Year'] = df['SaleDate'].dt.year
 df['Month Name'] = df['SaleDate'].dt.strftime('%B')
 df['Quarter'] = df['SaleDate'].dt.to_period("Q").astype(str)```
 
 2. Filter for 2024 Data
-```python
-Copy code
 
-df_2024 = df[df['Year'] == 2024].copy()
+
+```df_2024 = df[df['Year'] == 2024].copy()
 3. Perform OLAP Analysis
 Slicing – Sales by Product Category (2024)
 python
@@ -223,10 +220,8 @@ plt.title('Total Sales by Product Category (2024)')
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
-Dicing – Sales by Region per Month (2024)```
+Dicing – Sales by Region per Month (2024)
 
-```python
-Copy code
 month_order = ['January', 'February', 'March', 'April', 'May', 'June',
                'July', 'August', 'September', 'October', 'November', 'December']
 df_2024['Month Name'] = pd.Categorical(df_2024['Month Name'], categories=month_order, ordered=True)
@@ -237,11 +232,11 @@ sns.lineplot(data=monthly_region_sales, x='Month Name', y='SaleAmount', hue='Reg
 plt.title('Monthly Sales by Region (2024)')
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.show()
+plt.show()```
+
 Drilldown – Monthly Sales % Growth by Region
-python
-Copy code
-monthly_region_sales.sort_values(['Region', 'Month Name'], inplace=True)
+
+```monthly_region_sales.sort_values(['Region', 'Month Name'], inplace=True)
 monthly_region_sales['% Growth'] = monthly_region_sales.groupby('Region')['SaleAmount'].pct_change() * 100
 monthly_region_sales['% Growth'] = monthly_region_sales['% Growth'].round(2)
 
