@@ -188,7 +188,8 @@ SELECT
 FROM sale s
 LEFT JOIN customer c ON s.CustomerID = c.CustomerID
 LEFT JOIN product p ON (s.ProductID - 100) = p.ProductID
-""", conn)
+""", conn)```
+
 We also extracted:
 
 Year
@@ -201,19 +202,20 @@ From the SaleDate column:
 
 python
 Copy code
-df['SaleDate'] = pd.to_datetime(df['SaleDate'])
+```df['SaleDate'] = pd.to_datetime(df['SaleDate'])
 df['Year'] = df['SaleDate'].dt.year
 df['Month Name'] = df['SaleDate'].dt.strftime('%B')
-df['Quarter'] = df['SaleDate'].dt.to_period("Q").astype(str)
+df['Quarter'] = df['SaleDate'].dt.to_period("Q").astype(str)```
 2. Filter for 2024 Data
 python
 Copy code
+```
 df_2024 = df[df['Year'] == 2024].copy()
 3. Perform OLAP Analysis
 Slicing – Sales by Product Category (2024)
 python
 Copy code
-category_sales = df_2024.groupby('Category')['SaleAmount'].sum().reset_index()
+category_sales = df_2024.groupby('Category')['SaleAmount'].sum().reset_index()```
 
 sns.barplot(data=category_sales, x='Category', y='SaleAmount')
 plt.title('Total Sales by Product Category (2024)')
@@ -221,6 +223,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 Dicing – Sales by Region per Month (2024)
+```
 python
 Copy code
 month_order = ['January', 'February', 'March', 'April', 'May', 'June',
