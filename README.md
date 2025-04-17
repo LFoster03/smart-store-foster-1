@@ -260,6 +260,19 @@ Jupyter Notebook visualizations
 
 Clean SQLite join and date-derived dimensions
 
+Business Questions Answered
+Which regions show the most consistent sales growth year over year?
+The North is most consistent with sales but the East sells the most.
+
+Do certain product categories drive most of the growth?
+Electronics is the primary growth driver, while Clothing is secondary growth, especially in April. Sports has a minor role early in the year but doesn't continue.
+
+Are there seasonal spikes in sales (e.g., Q4)?
+Sales spike in the winter months and decrease in the summer months.
+
+What months had the highest/lowest sales in 2024?
+Highest in February, lowest in March.
+
 Summary
 This analysis provided strong insight into sales trends over time, helped detect seasonality, and revealed growth drivers by region and product — all critical for better business forecasting and planning.
 
